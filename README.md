@@ -43,7 +43,7 @@ PORT=3000
 
 ### 3. Run server
 ```bash
-npm start
+node server.js
 ```
 
 ---
@@ -100,31 +100,6 @@ Corrects common mistakes like:
 - DIFIC → DIFC
 - burj kalifa → Burj Khalifa
 - a.e.d → AED
-
----
-
-## ⚠️ Common Issues
-
-### CORS Error
-Make sure frontend URL has no trailing slash:
-```
-https://your-frontend.vercel.app
-```
-
-### Audio Dropped
-Wait for:
-```
-transcription_ready
-```
-before sending audio.
-
----
-
-## 🚀 Future Improvements
-
-- Multi-language support  
-- Translation  
-- AI summarization  
 
 ---
 
