@@ -15,17 +15,17 @@ export function registerTranscriptionHandlers(socket) {
 
       console.log(`[Deepgram] Opening session for socket ${socket.id}`);
 
-      // ✅ IMPORTANT: this is async now
+      
       dgConnection = await createDeepgramLiveSession();
 
-      // ✅ Wait for connection to open
+      // Wait for connection to open
       dgConnection.on("open", () => {
         isConnected = true;
         console.log(`[Deepgram] Session open for ${socket.id}`);
         socket.emit("transcription_ready");
       });
 
-      // ✅ Main transcript handler (NEW SDK FORMAT)
+      //  Main transcript handler (NEW SDK FORMAT)
       dgConnection.on("message", (data) => {
         if (data.type !== "Results") return;
 
@@ -78,7 +78,7 @@ export function registerTranscriptionHandlers(socket) {
         socket.emit("transcription_closed");
       });
 
-      // 🔥 REQUIRED for this SDK
+      // REQUIRED for this SDK
       dgConnection.connect();
 
       // Wait until ready
@@ -92,19 +92,19 @@ export function registerTranscriptionHandlers(socket) {
     }
   });
 
-  // 🎧 Receive audio
+  //  Receive audio
   socket.on("audio_chunk", (chunk) => {
     if (!dgConnection || !isConnected) return;
 
     try {
-      // ✅ IMPORTANT CHANGE
+      // IMPORTANT CHANGE
       dgConnection.sendMedia(chunk);
     } catch (err) {
       console.error(`[Deepgram] Failed to send audio chunk:`, err.message);
     }
   });
 
-  // 🛑 Stop
+  // Stop
   socket.on("stop_transcription", () => {
     if (dgConnection) {
       console.log(`[Deepgram] Closing session for ${socket.id}`);
@@ -114,7 +114,7 @@ export function registerTranscriptionHandlers(socket) {
     }
   });
 
-  // 🔌 Disconnect cleanup
+  //  Disconnect cleanup
   socket.on("disconnect", () => {
     if (dgConnection) {
       dgConnection.finish?.();
