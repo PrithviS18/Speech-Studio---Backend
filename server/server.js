@@ -19,12 +19,12 @@ app.use(express.json());
 
 // Root route
 app.get("/", (req, res) => {
-  res.send("Amatyaa STT Server Running 🚀");
+  res.send("Speech Studio Server Running 🚀");
 });
 
 // Health check
 app.get("/health", (req, res) => {
-  res.json({ status: "ok", service: "amatyaa-stt" });
+  res.json({ status: "ok", service: "speech-studio" });
 });
 
 // Socket connection
