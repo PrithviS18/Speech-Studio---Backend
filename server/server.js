@@ -50,6 +50,6 @@ app.use((err, req, res, next) => {
 const PORT = process.env.PORT || 3000;
 
 server.listen(PORT, () => {
-  console.log(`[Server] Amatyaa STT running on port ${PORT}`);
+  console.log(`[Server] Speech Studio running on port ${PORT}`);
 });
 

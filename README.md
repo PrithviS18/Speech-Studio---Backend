@@ -1,4 +1,4 @@
-# 🚀 Amatyaa STT Server
+# 🚀 Speech Studio Server
 
 Real-time Speech-to-Text backend using Node.js, Express, Socket.IO, and Deepgram with Dubai-specific optimizations.
 
